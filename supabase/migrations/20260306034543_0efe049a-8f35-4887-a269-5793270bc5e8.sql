@@ -1,0 +1,1 @@
+ALTER TABLE public.events ADD COLUMN sales_end_time text NULL DEFAULT NULL;

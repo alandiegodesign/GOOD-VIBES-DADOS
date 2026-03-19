@@ -1,0 +1,1 @@
+ALTER TABLE public.ticket_locations ADD COLUMN is_sold_out boolean NOT NULL DEFAULT false;

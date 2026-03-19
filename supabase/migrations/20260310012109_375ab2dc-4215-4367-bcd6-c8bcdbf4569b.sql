@@ -1,0 +1,9 @@
+CREATE INDEX IF NOT EXISTS idx_events_created_by ON public.events(created_by);
+CREATE INDEX IF NOT EXISTS idx_events_deleted_at ON public.events(deleted_at);
+CREATE INDEX IF NOT EXISTS idx_events_date ON public.events(date);
+CREATE INDEX IF NOT EXISTS idx_orders_event_id ON public.orders(event_id);
+CREATE INDEX IF NOT EXISTS idx_orders_user_id ON public.orders(user_id);
+CREATE INDEX IF NOT EXISTS idx_order_items_order_id ON public.order_items(order_id);
+CREATE INDEX IF NOT EXISTS idx_order_items_ticket_location_id ON public.order_items(ticket_location_id);
+CREATE INDEX IF NOT EXISTS idx_ticket_locations_event_id ON public.ticket_locations(event_id);
+CREATE INDEX IF NOT EXISTS idx_user_roles_user_id ON public.user_roles(user_id);

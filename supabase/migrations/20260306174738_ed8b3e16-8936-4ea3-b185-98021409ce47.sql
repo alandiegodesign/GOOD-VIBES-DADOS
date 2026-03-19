@@ -1,0 +1,1 @@
+ALTER TABLE public.ticket_locations ADD COLUMN group_size integer NOT NULL DEFAULT 1;
