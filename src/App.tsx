@@ -36,6 +36,7 @@ const ArchivedEventsPage = lazyRetry(() => import("./pages/ArchivedEventsPage"))
 const TrashPage = lazyRetry(() => import("./pages/TrashPage"));
 const RevenueDashboardPage = lazyRetry(() => import("./pages/RevenueDashboardPage"));
 const ValidateTicketsPage = lazyRetry(() => import("./pages/ValidateTicketsPage"));
+const SendCourtesyPage = lazyRetry(() => import("./pages/SendCourtesyPage"));
 const MyPagePage = lazyRetry(() => import("./pages/MyPagePage"));
 const PaymentSuccessPage = lazyRetry(() => import("./pages/PaymentSuccessPage"));
 const AdminDashboardPage = lazyRetry(() => import("./pages/AdminDashboardPage"));
