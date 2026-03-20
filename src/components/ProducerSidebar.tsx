@@ -4,7 +4,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import {
   Menu, Home, PlusCircle, TicketCheck, Archive,
-  BarChart3, User, LogOut, Users, Trash2, DollarSign, Shield, FileEdit, Key
+  BarChart3, User, LogOut, Users, Trash2, DollarSign, Shield, FileEdit, Key, Gift
 } from 'lucide-react';
 import { useState } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -15,6 +15,7 @@ const MENU_ITEMS = [
   { label: 'Criar Evento', icon: PlusCircle, path: '/create-event' },
   { label: 'Rascunhos', icon: FileEdit, path: '/?filter=drafts' },
   { label: 'Ingressos Vendidos', icon: TicketCheck, path: '/sold-tickets' },
+  { label: 'Enviar Cortesia', icon: Gift, path: '/send-courtesy' },
   { label: 'Arquivados', icon: Archive, path: '/archived' },
   { label: 'Lixeira', icon: Trash2, path: '/trash' },
   { label: 'Faturamento', icon: DollarSign, path: '/revenue' },

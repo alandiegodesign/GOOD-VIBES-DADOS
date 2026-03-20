@@ -36,6 +36,7 @@ const ArchivedEventsPage = lazyRetry(() => import("./pages/ArchivedEventsPage"))
 const TrashPage = lazyRetry(() => import("./pages/TrashPage"));
 const RevenueDashboardPage = lazyRetry(() => import("./pages/RevenueDashboardPage"));
 const ValidateTicketsPage = lazyRetry(() => import("./pages/ValidateTicketsPage"));
+const SendCourtesyPage = lazyRetry(() => import("./pages/SendCourtesyPage"));
 const MyPagePage = lazyRetry(() => import("./pages/MyPagePage"));
 const PaymentSuccessPage = lazyRetry(() => import("./pages/PaymentSuccessPage"));
 const AdminDashboardPage = lazyRetry(() => import("./pages/AdminDashboardPage"));
@@ -102,6 +103,7 @@ const AppRoutes = () => (
       <Route path="/archived" element={<ProducerRoute><ArchivedEventsPage /></ProducerRoute>} />
       <Route path="/trash" element={<ProducerRoute><TrashPage /></ProducerRoute>} />
       <Route path="/validate-tickets" element={<ProducerRoute><ValidateTicketsPage /></ProducerRoute>} />
+      <Route path="/send-courtesy" element={<ProducerRoute><SendCourtesyPage /></ProducerRoute>} />
       <Route path="/tickets/:eventId" element={<ProtectedRoute><TicketSelectionPage /></ProtectedRoute>} />
       <Route path="/checkout/:eventId" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
       <Route path="/payment-success" element={<ProtectedRoute><PaymentSuccessPage /></ProtectedRoute>} />
