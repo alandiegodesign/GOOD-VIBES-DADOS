@@ -103,6 +103,7 @@ const AppRoutes = () => (
       <Route path="/archived" element={<ProducerRoute><ArchivedEventsPage /></ProducerRoute>} />
       <Route path="/trash" element={<ProducerRoute><TrashPage /></ProducerRoute>} />
       <Route path="/validate-tickets" element={<ProducerRoute><ValidateTicketsPage /></ProducerRoute>} />
+      <Route path="/send-courtesy" element={<ProducerRoute><SendCourtesyPage /></ProducerRoute>} />
       <Route path="/tickets/:eventId" element={<ProtectedRoute><TicketSelectionPage /></ProtectedRoute>} />
       <Route path="/checkout/:eventId" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
       <Route path="/payment-success" element={<ProtectedRoute><PaymentSuccessPage /></ProtectedRoute>} />
