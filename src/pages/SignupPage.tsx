@@ -156,6 +156,12 @@ export default function SignupPage() {
             </button>
           </div>
 
+          <div className="relative">
+            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+            <Input type={showPassword ? 'text' : 'password'} placeholder="Confirmar Senha *" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}
+              className="pl-12 h-14 bg-background border-border rounded-xl text-foreground placeholder:text-muted-foreground focus-visible:ring-primary" />
+          </div>
+
           <Button type="submit" disabled={loading}
             className="w-full h-14 text-lg font-display font-bold rounded-xl gradient-primary border-0 glow-primary text-white">
             {loading ? 'Criando...' : 'Criar Conta'}
