@@ -79,11 +79,8 @@ export default function SendCourtesyPage() {
       setFoundUser(null);
       setSelectedLocationId('');
       setQuantity(1);
-      } else {
-        toast.error('Falha ao criar cortesia. Verifique a disponibilidade.');
-      }
-    } catch {
-      toast.error('Erro ao enviar cortesia.');
+    } catch (err: any) {
+      toast.error(err?.message || 'Erro ao enviar cortesia.');
     } finally {
       setSending(false);
     }
