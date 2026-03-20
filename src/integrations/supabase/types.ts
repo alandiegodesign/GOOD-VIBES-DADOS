@@ -377,6 +377,16 @@ export type Database = {
         }[]
       }
       admin_validate_order: { Args: { p_order_id: string }; Returns: boolean }
+      create_courtesy_order: {
+        Args: {
+          p_event_id: string
+          p_producer_id: string
+          p_quantity: number
+          p_recipient_id: string
+          p_ticket_location_id: string
+        }
+        Returns: string
+      }
       decrease_availability: {
         Args: { loc_id: string; qty: number }
         Returns: boolean
