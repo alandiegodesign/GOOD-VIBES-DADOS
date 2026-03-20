@@ -63,21 +63,22 @@ export default function SendCourtesyPage() {
   };
 
   const handleSend = async () => {
-    if (!selectedEventId || !selectedLocationId || !foundUser) return;
+    if (!selectedEventId || !selectedLocationId || !foundUser || !user) return;
     setSending(true);
     try {
-      const items: CartItem[] = [{
-        ticket_location_id: selectedLocationId,
-        quantity,
-        unit_price: 0, // cortesia = gratuito
-      }];
-      const order = await createOrder(selectedEventId, foundUser.user_id, items);
-      if (order) {
-        toast.success(`Cortesia enviada para ${foundUser.user_name}!`);
-        setIdentifier('');
-        setFoundUser(null);
-        setSelectedLocationId('');
-        setQuantity(1);
+      const { data, error } = await supabase.rpc('create_courtesy_order', {
+        p_event_id: selectedEventId,
+        p_recipient_id: foundUser.user_id,
+        p_ticket_location_id: selectedLocationId,
+        p_quantity: quantity,
+        p_producer_id: user.id,
+      });
+      if (error) throw error;
+      toast.success(`Cortesia enviada para ${foundUser.user_name}!`);
+      setIdentifier('');
+      setFoundUser(null);
+      setSelectedLocationId('');
+      setQuantity(1);
       } else {
         toast.error('Falha ao criar cortesia. Verifique a disponibilidade.');
       }
