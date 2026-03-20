@@ -54,10 +54,10 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 }
 
 function ProducerRoute({ children }: { children: React.ReactNode }) {
-  const { session, profile, loading } = useAuth();
+  const { session, profile, loading, isAdmin } = useAuth();
   if (loading) return <div className="min-h-screen flex items-center justify-center text-muted-foreground">Carregando...</div>;
   if (!session) return <Navigate to="/login" replace />;
-  if (profile && profile.user_type !== 'produtor') return <Navigate to="/" replace />;
+  if (profile && profile.user_type !== 'produtor' && !isAdmin) return <Navigate to="/" replace />;
   return <ProducerLayout>{children}</ProducerLayout>;
 }
 
