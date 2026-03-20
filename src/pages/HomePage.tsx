@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
   Plus, Search, Ticket, LogOut, ShoppingBag, DollarSign,
-  CalendarCheck, Eye, ChevronLeft, ChevronRight, Calendar, AlertTriangle, RefreshCw, Shield, FileEdit, EyeOff
+  CalendarCheck, Eye, ChevronLeft, ChevronRight, Calendar, AlertTriangle, RefreshCw, Shield, FileEdit, EyeOff, Briefcase
 } from 'lucide-react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -24,8 +24,9 @@ export default function HomePage() {
   const [search, setSearch] = useState('');
   const isProdutor = profile?.user_type === 'produtor';
   const clientView = searchParams.get('view') === 'client';
+  const producerView = searchParams.get('view') === 'producer';
   const draftsFilter = searchParams.get('filter') === 'drafts';
-  const showAsProducer = isProdutor && !clientView;
+  const showAsProducer = (isProdutor || (isAdmin && producerView)) && !clientView;
 
   const { data: events = [], isLoading, isError, refetch } = useQuery({
     queryKey: showAsProducer ? ['my-events', user?.id] : isAdmin ? ['all-events'] : ['events'],
@@ -107,9 +108,14 @@ export default function HomePage() {
             </div>
             <div className="flex items-center gap-2">
               {isAdmin && (
-                <Button variant="ghost" size="sm" className="text-white hover:bg-white/20" onClick={() => navigate('/admin')}>
-                  <Shield className="w-4 h-4 mr-1" /> Painel ADM
-                </Button>
+                <>
+                  <Button variant="ghost" size="sm" className="text-white hover:bg-white/20" onClick={() => navigate('/admin')}>
+                    <Shield className="w-4 h-4 mr-1" /> Painel ADM
+                  </Button>
+                  <Button variant="ghost" size="sm" className="text-white hover:bg-white/20" onClick={() => navigate('/?view=producer')}>
+                    <Briefcase className="w-4 h-4 mr-1" /> Produtor
+                  </Button>
+                </>
               )}
               <Button variant="ghost" size="sm" className="text-white hover:bg-white/20" onClick={() => navigate('/my-orders')}>
                 <ShoppingBag className="w-4 h-4 mr-1" /> Ingressos
