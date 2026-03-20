@@ -29,6 +29,7 @@ export default function SignupPage() {
   const [cpf, setCpf] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
@@ -52,6 +53,10 @@ export default function SignupPage() {
     }
     if (password.length < 6) {
       toast.error('A senha deve ter no mínimo 6 caracteres');
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast.error('As senhas não coincidem');
       return;
     }
     setLoading(true);
@@ -79,8 +84,8 @@ export default function SignupPage() {
     if (error) {
       toast.error(error.message);
     } else {
-      toast.success('Conta criada! Verifique seu email para confirmar.');
-      navigate('/login');
+      toast.success('Conta criada com sucesso!');
+      navigate('/');
     }
   };
 
