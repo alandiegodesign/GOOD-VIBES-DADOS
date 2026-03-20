@@ -1,10 +1,11 @@
 import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '@/contexts/AuthContext';
 import { getEventsByCreator } from '@/services/eventService';
 import { getLocationsByEvent } from '@/services/ticketLocationService';
-import { findUserByEmailOrCpf, createOrder, CartItem } from '@/services/orderService';
+import { findUserByEmailOrCpf } from '@/services/orderService';
+import { supabase } from '@/integrations/supabase/client';
 import { ArrowLeft, Gift, Search, UserCheck, Ticket, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Input } from '@/components/ui/input';
