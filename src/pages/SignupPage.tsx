@@ -29,6 +29,7 @@ export default function SignupPage() {
   const [cpf, setCpf] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
@@ -52,6 +53,10 @@ export default function SignupPage() {
     }
     if (password.length < 6) {
       toast.error('A senha deve ter no mínimo 6 caracteres');
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast.error('As senhas não coincidem');
       return;
     }
     setLoading(true);
@@ -79,8 +84,8 @@ export default function SignupPage() {
     if (error) {
       toast.error(error.message);
     } else {
-      toast.success('Conta criada! Verifique seu email para confirmar.');
-      navigate('/login');
+      toast.success('Conta criada com sucesso!');
+      navigate('/');
     }
   };
 
@@ -149,6 +154,12 @@ export default function SignupPage() {
               className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground">
               {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
             </button>
+          </div>
+
+          <div className="relative">
+            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+            <Input type={showPassword ? 'text' : 'password'} placeholder="Confirmar Senha *" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}
+              className="pl-12 h-14 bg-background border-border rounded-xl text-foreground placeholder:text-muted-foreground focus-visible:ring-primary" />
           </div>
 
           <Button type="submit" disabled={loading}
