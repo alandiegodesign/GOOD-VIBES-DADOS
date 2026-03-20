@@ -24,8 +24,9 @@ export default function HomePage() {
   const [search, setSearch] = useState('');
   const isProdutor = profile?.user_type === 'produtor';
   const clientView = searchParams.get('view') === 'client';
+  const producerView = searchParams.get('view') === 'producer';
   const draftsFilter = searchParams.get('filter') === 'drafts';
-  const showAsProducer = isProdutor && !clientView;
+  const showAsProducer = (isProdutor || (isAdmin && producerView)) && !clientView;
 
   const { data: events = [], isLoading, isError, refetch } = useQuery({
     queryKey: showAsProducer ? ['my-events', user?.id] : isAdmin ? ['all-events'] : ['events'],
