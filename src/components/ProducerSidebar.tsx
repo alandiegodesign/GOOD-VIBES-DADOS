@@ -4,7 +4,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import {
   Menu, Home, PlusCircle, TicketCheck, Archive,
-  BarChart3, User, LogOut, Users, Trash2, DollarSign, Shield, FileEdit, Key
+  BarChart3, User, LogOut, Users, Trash2, DollarSign, Shield, FileEdit, Key, Gift
 } from 'lucide-react';
 import { useState } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
